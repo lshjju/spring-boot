@@ -30,5 +30,17 @@ ResponseEntity<String> detail() {
       return ResponseEntity.status(에러코드).body("에러이유");
     }
 }
+
+@GetMapping("/detail/{id}")
+String detail(@PathVariable Long id, Model model) {
+  
+  Optional<Item> result = itemRepository.findById(id);
+  if (result.isPresent()){
+    model.addAttribute("data", result.get());
+    return "detail.html";
+    } else {
+      return "redirect:/list";
+    }
+  }        
          
     
