@@ -8,4 +8,13 @@ String edit(Model model) {
     return "redirect:/list";
   }
 }
+
+@PostMapping("/add")
+String writePost(String title, Integer price) {
+  Item item = new Item;
+  item.setTitle(title);
+  item.setPrice(price);
+  itemRepository.save(item);
+  return "redirect:/list";
+}  
     
