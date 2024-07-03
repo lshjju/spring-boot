@@ -1,3 +1,4 @@
+@Service
 @RequiredArgsConstructor
 public class ItemService {
   private final ItemRepository itemRepository;
