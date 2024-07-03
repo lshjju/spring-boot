@@ -22,14 +22,24 @@ public class ItemController {
 
 }
 
-@PostMapping("/add")
-String writePost(String title, Integer price) {
-  Item item = new Item;
+// @PostMapping("/add")
+// String writePost(String title, Integer price) {
+//   Item item = new Item;
+//   item.setTitle(title);
+//   item.setPrice(price);
+//   itemRepository.save(item);
+//   return "redirect:/list";
+// }  
+
+@PostMapping("/edit")
+String editItem(String title, Integer price, Long id) {
+  Item item = new Item();
+  item.setId(id);
   item.setTitle(title);
   item.setPrice(price);
   itemRepository.save(item);
   return "redirect:/list";
-}  
+}
   
 @GetMapping("/edit/{id}")
 String edit(@PathVariable Long id, Model model) {
