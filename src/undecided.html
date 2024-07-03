@@ -43,4 +43,7 @@ String detail(@PathVariable Long id, Model model) {
     }
   }        
          
-    
+@GetMapping("/write")
+String write() {
+  return "write.html";
+}
