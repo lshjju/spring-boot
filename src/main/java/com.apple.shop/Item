@@ -1,1 +1,10 @@
-a
+@Entity
+public class Item {
+  private String title;
+  private Integer price;
+
+  public void setTitle(String title) {
+    만약에 title변수에 이상한 긴 문자 넣으려고 하면 차단하기~~
+    this.title = title;
+  }
+}
