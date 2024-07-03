@@ -21,4 +21,14 @@ String writePost(String title, Integer price) {
   itemRepository.save(item);
   return "redirect:/list";
 }  
+         
+@GetMapping("/detail/{id}")
+ResponseEntity<String> detail() {
+    try {
+      throw new Exception("이런저런에러");
+    } catch(Exception e){
+      return ResponseEntity.status(에러코드).body("에러이유");
+    }
+}
+         
     
