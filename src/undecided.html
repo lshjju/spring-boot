@@ -2,48 +2,11 @@ throw new ResponseStatusException(
        HttpStatus.NOT_FOUND, "어쩌구 저쩌구해서 404에러남"
 ); 
 
-@GetMapping("/edit/{id}")
-String edit(Model model) {
-  Optional<Item> result = itemRepository.findById(1L);
-  if (result.isPresent()) {
-    model.addAttribute("data", result.get());
-    return "edit.html";
-  } else {
-    return "redirect:/list";
-  }
-}
 
-@PostMapping("/add")
-String writePost(String title, Integer price) {
-  Item item = new Item;
-  item.setTitle(title);
-  item.setPrice(price);
-  itemRepository.save(item);
-  return "redirect:/list";
-}  
-         
-@GetMapping("/detail/{id}")
-ResponseEntity<String> detail() {
-    try {
-      throw new Exception("이런저런에러");
-    } catch(Exception e){
-      return ResponseEntity.status(에러코드).body("에러이유");
-    }
-}
 
-@GetMapping("/detail/{id}")
-String detail(@PathVariable Long id, Model model) {
-  
-  Optional<Item> result = itemRepository.findById(id);
-  if (result.isPresent()){
-    model.addAttribute("data", result.get());
-    return "detail.html";
-    } else {
-      return "redirect:/list";
-    }
-  }        
+       
+
+
+     
          
-@GetMapping("/write")
-String write() {
-  return "write.html";
-}
+
