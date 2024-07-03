@@ -1,1 +1,10 @@
-a
+public class ItemService {
+
+  public void saveItem(){
+    Item item = new Item();
+    item.setTitle(title);
+    item.setPrice(price);
+    itemRepository.save(item);
+  }
+
+}
