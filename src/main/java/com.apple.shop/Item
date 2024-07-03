@@ -1,4 +1,6 @@
 @Entity
+@Getter
+@Setter
 public class Item {
   private String title;
   private Integer price;
