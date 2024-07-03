@@ -31,12 +31,9 @@ String writePost(String title, Integer price) {
   return "redirect:/list";
 }  
   
-
-
-
 @GetMapping("/edit/{id}")
-String edit(Model model) {
-  Optional<Item> result = itemRepository.findById(1L);
+String edit(@PathVariable Long id, Model model) {
+  Optional<Item> result = itemRepository.findById(id);
   if (result.isPresent()) {
     model.addAttribute("data", result.get());
     return "edit.html";
@@ -44,6 +41,8 @@ String edit(Model model) {
     return "redirect:/list";
   }
 }
+
+
 // var item = new Item();
 // item.id = 1L;
 // itemRepository.save(item)
