@@ -1,3 +1,5 @@
+package com.apple.shop;
+
 @Controller
 public class BasicController {
     
