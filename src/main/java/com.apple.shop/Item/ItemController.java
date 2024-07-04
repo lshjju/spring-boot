@@ -20,17 +20,16 @@ public class ItemController {
     return "redirect:/list";
   }
 
-}
-
-// @PostMapping("/add")
-// String writePost(String title, Integer price) {
-//   Item item = new Item;
-//   item.setTitle(title);
-//   item.setPrice(price);
-//   itemRepository.save(item);
-//   return "redirect:/list";
-// }  
-
+/*  
+@PostMapping("/add")
+String writePost(String title, Integer price) {
+  Item item = new Item;
+  item.setTitle(title);
+  item.setPrice(price);
+  itemRepository.save(item);
+  return "redirect:/list";
+}  
+*/
 
   
 @GetMapping("/edit/{id}")
@@ -56,19 +55,25 @@ String editItem(String title, Integer price, Long id) {
   return "redirect:/list";
 }
 
+/*
+var item = new Item();
+item.id = 1L;
+itemRepository.save(item)
+*/
 
-// var item = new Item();
-// item.id = 1L;
-// itemRepository.save(item)
-
-
-@DeleteMapping("/item")
+@DeleteMapping("/item/{abc}")
 ResponseEntity<String> deleteItem(@RequestParam Long id) {
   itemRepository.deleteById(id);
   return ResponseEntity.status(200).body("삭제완료");
 } 
 
 
+@GeteMapping("/test2")
+String deleteItem() {
+  var result = new BCryptPasswordEncorder().encode("문자");
+  System.out.println(result);
+  return "redirect:/list";
+}   
 
 
 @GetMapping("/detail/{id}")
@@ -104,6 +109,12 @@ String list(Model model){
 
   return "list.html"
 }
+
+
+  
+}
+
+
 
 
 
