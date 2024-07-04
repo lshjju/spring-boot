@@ -5,7 +5,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
+  
   private final MemberRepository memberRepository;
+  private final PasswordEncoder passwordEncoder;
+
+  @GetMapping("/register")
+  String register() {
+    return "register.html";
+  }
 
   @PostMapping("/member")
   public String addMember(
