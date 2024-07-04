@@ -62,6 +62,12 @@ String editItem(String title, Integer price, Long id) {
 // itemRepository.save(item)
 
 
+@PostMapping("/test1")
+String test1(@RequestBody Map<String, Object> body) {
+  System.out.println("yochung");
+  return "redirect:/list";
+}
+
 
 @GetMapping("/detail/{id}")
 ResponseEntity<String> detail() {
