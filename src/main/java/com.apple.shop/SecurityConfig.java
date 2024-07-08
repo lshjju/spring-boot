@@ -18,6 +18,13 @@ public class SecurityConfig {
     http.authorizeHttpRequests((authorize) ->
         authorize.requestMatchers("/**").permitAll()
     );
+
+    http.formLogin((formLogin) 
+                   -> formLogin.loginPage("/login")
+                    .defaultSuccessUrl("/")
+                    .failureUrl("/fail")
+    ); 
+    
     return http.build();
   }
 
