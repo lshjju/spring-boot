@@ -16,7 +16,7 @@ public class MyUserDetailsService implements UserDetailsService {
       throw new UsernameNotFoundException("그런 아이디 없음");    
     }
     var user = result.get();
-    List<GrantedAuthority> authorities = new ArrayList<>;
+    List<GrantedAuthority> authorities = new ArrayList<>();
     authorities.add(new SimpleGrantedAutority("일반유저"));
 
     return new User(user.getUsername(), user.getPassword(), autorities);
