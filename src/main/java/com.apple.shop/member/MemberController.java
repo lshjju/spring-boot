@@ -46,7 +46,23 @@ public class MemberController {
     return "mypage.html";
   }
 
-
-
   
+  @GetMapping("/user/1")
+  @ResponseBody
+  public MemberDto getUser() {
+    var a = memberRepository.findById(1L);
+    var result = a.get();
+    var data = new MemberDto(result.getUsername(), result.getDisplayName());
+    return data;
+  }
+
+}
+
+class MemberDto {
+  public String username;
+  public String displayName;
+  MemberDto(String a, String b) {
+    this.username = a;
+    this.displayName = b;
+  }
 }
