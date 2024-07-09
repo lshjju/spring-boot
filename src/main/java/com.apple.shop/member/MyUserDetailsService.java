@@ -18,9 +18,22 @@ public class MyUserDetailsService implements UserDetailsService {
     var user = result.get();
     List<GrantedAuthority> authorities = new ArrayList<>();
     authorities.add(new SimpleGrantedAutority("일반유저"));
-
-    return new User(user.getUsername(), user.getPassword(), autorities);
+    var a = new Customer(user.getUsername(), user.getPassword(), authorities);
+    a.displayName = user.getDisplayName();
+    return a;
 
   } 
 
+}
+
+class Customer extends User {
+  public String displayName;
+  public CustomUser(
+    String username,
+    String password,
+    Collection<? extends GrantedAuthority> authorities
+  ) {
+    super(username, password, authorities);
+  }
+  
 }
