@@ -30,12 +30,19 @@ public class MemberController {
     return "redirect:/list";
   }
 
-  @GetMapping(""/login)
+  @GetMapping("/login")
   public String login() {
     return "login.html";
   }
   
-
+  @GetMapping("/my-page")
+  public String myPage(Authentication auth) {
+    System.out.println(auth);
+    System.out.println(auth.getName());
+    System.out.println(auth.isAuthenticated());
+    
+    return "mypage.html";
+  }
 
 
 
