@@ -40,7 +40,9 @@ public class MemberController {
     // System.out.println(auth);
     // System.out.println(auth.getName());
     // System.out.println(auth.isAuthenticated());
-    System.out.println(auth.getAuthorities().contains(new SimpleGrantedAuthority("일반유저")));
+    // System.out.println(auth.getAuthorities().contains(new SimpleGrantedAuthority("일반유저")));
+    Customer result = (Customer) auth.getPrincipal();
+    System.out.println(result.displayName);
     return "mypage.html";
   }
 
