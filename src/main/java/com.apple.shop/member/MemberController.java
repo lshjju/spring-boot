@@ -37,10 +37,12 @@ public class MemberController {
   
   @GetMapping("/my-page")
   public String myPage(Authentication auth) {
-    System.out.println(auth);
-    System.out.println(auth.getName());
-    System.out.println(auth.isAuthenticated());
-    
+    // System.out.println(auth);
+    // System.out.println(auth.getName());
+    // System.out.println(auth.isAuthenticated());
+    System.out.println(auth.getAuthorities().contains(
+          new SimpleGrantedAuthority("일반유저")
+    ));
     return "mypage.html";
   }
 
