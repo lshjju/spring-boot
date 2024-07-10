@@ -126,9 +126,9 @@ ResponseEntity<String> deleteItem(@RequestParam Long id) {
 } 
 
   
-@GetMapping("/list/page/1")
-String getListPage(Model model){
-  List<Item> result = itemRepository.findAll();
+@GetMapping("/list/page/{abc}")
+String getListPage(Model model, @PathVariable Integer abc){
+  Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
   model.addAttribute("items", result);
   return "list.html"
 }  
