@@ -133,6 +133,12 @@ String getListPage(Model model, @PathVariable Integer abc){
   return "list.html"
 }  
   
+
+@GetMapping("/presigned-url")
+String getURL(@RequestParam String filename){
+  System.out.println(filename);
+  return "list.html"
+}  
   
 }
 
