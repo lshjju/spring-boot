@@ -5,14 +5,98 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
+  
   private final ItemRepository itemRepository;
   private final ItemService itemService;
+  private final S3Service s3Service;
+
+  @GetMapping("/write")
+  String write() {
+  return "write.html";
+}
 
 
-  @Autowired
-  ItemController(ItemRepository itemRepository) {
-    this.itemRepository = itemRepository;
+@GetMapping("/list")
+String list(Model model){
+  List<Item> result = itemRepository.findAll();
+  model.addAttribute("items", result);
+  return "list.html";
+}
+
+
+@PostMapping("/add")
+String addPost(String title, Integer price) {
+  itemService.saveItem(title, price);
+  return "redirect:/list";
+}
+
+
+  
+@GetMapping("/detail/{id}")
+String detail(@PathVariable Long id, Model model) {
+  
+  Optional<Item> result = itemRepository.findById(id);
+  if (result.isPresent()){
+    model.addAttribute("data", result.get());
+    return "detail.html";
+    } else {
+      return "redirect:/list";
+    }
+  }  
+
+@GetMapping("/edit/{id}")
+String edit(Model model, @PathVariable Long id) {
+  Optional<Item> result = itemRepository.findById(id);
+  if (result.isPresent()) {
+    model.addAttribute("data", result.get());
+    return "edit.html";
+  } else {
+    return "redirect:/list";
   }
+}
+
+  
+@PostMapping("/edit")
+String editItem(String title, Integer price, Long id) {
+  Item item = new Item();
+  item.setId(id);
+  item.setTitle(title);
+  item.setPrice(price);
+  itemRepository.save(item);
+  return "redirect:/list";
+}
+  
+  
+@DeleteMapping("/item")
+ResponseEntity<String> deleteItem(@RequestParam Long id) {
+  itemRepository.deleteById(id);
+  return ResponseEntity.status(200).body("삭제완료");
+} 
+
+  
+@GetMapping("/list/page/{abc}")
+String getListPage(Model model, @PathVariable Integer abc){
+  Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
+  model.addAttribute("items", result);
+  return "list.html";
+}  
+  
+
+@GetMapping("/presigned-url")
+@ResponseBody
+String getURL(@RequestParam String filename){
+  var result = s3Service.createPreSignedUrl("test/" + filename);
+  System.out.println(result);
+  return result;
+}  
+
+
+
+
+  // @Autowired
+  // ItemController(ItemRepository itemRepository) {
+  //   this.itemRepository = itemRepository;
+  // }
 
 
 // @PostMapping("/add")
@@ -35,28 +119,10 @@ public class ItemController {
 
 
   
-// @GetMapping("/edit/{id}")
-// String edit(Model model, @PathVariable Long id) {
-//   Optional<Item> result = itemRepository.findById(id);
-//   if (result.isPresent()) {
-//     model.addAttribute("data", result.get());
-//     return "edit.html";
-//   } else {
-//     return "redirect:/list";
-//   }
-// }
 
   
 
-// @PostMapping("/edit")
-// String editItem(String title, Integer price, Long id) {
-//   Item item = new Item();
-//   item.setId(id);
-//   item.setTitle(title);
-//   item.setPrice(price);
-//   itemRepository.save(item);
-//   return "redirect:/list";
-// }
+
 
 
 // var item = new Item();
@@ -85,60 +151,7 @@ public class ItemController {
 // }
 
 
-@GetMapping("/write")
-String write() {
-  return "write.html";
-}
-
-@GetMapping("/list")
-String list(Model model){
-  List<Item> result = itemRepository.findAll();
-  model.addAttribute("items", result);
-  return "list.html"
-}
-
-
-@PostMapping("/add")
-String addPost(String title, Integer price) {
-  itemService.saveItem(title, price);
-  return "redirect:/list";
-}
-
-
   
-@GetMapping("/detail/{id}")
-String detail(@PathVariable Long id, Model model) {
-  
-  Optional<Item> result = itemRepository.findById(id);
-  if (result.isPresent()){
-    model.addAttribute("data", result.get());
-    return "detail.html";
-    } else {
-      return "redirect:/list";
-    }
-  }  
-
-  
-@DeleteMapping("/item/{abc}")
-ResponseEntity<String> deleteItem(@RequestParam Long id) {
-  itemRepository.deleteById(id);
-  return ResponseEntity.status(200).body("삭제완료");
-} 
-
-  
-@GetMapping("/list/page/{abc}")
-String getListPage(Model model, @PathVariable Integer abc){
-  Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
-  model.addAttribute("items", result);
-  return "list.html"
-}  
-  
-
-@GetMapping("/presigned-url")
-String getURL(@RequestParam String filename){
-  System.out.println(filename);
-  return "list.html"
-}  
   
 }
 
