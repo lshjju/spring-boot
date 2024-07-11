@@ -1,4 +1,4 @@
-class CustomUser extends User {
+public class CustomUser extends User {
   public String displayName;
   public CustomUser(
     String username,
