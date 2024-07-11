@@ -20,7 +20,8 @@ public class MyUserDetailsService implements UserDetailsService {
     authorities.add(new SimpleGrantedAutority("일반유저"));
     var a = new Customer(user.getUsername(), user.getPassword(), authorities);
     a.displayName = user.getDisplayName();
-    a.id = user.??;
+    a.id = user.getId();
+    
     return a;
 
   } 
