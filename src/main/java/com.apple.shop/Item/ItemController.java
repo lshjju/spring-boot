@@ -92,7 +92,11 @@ String getURL(@RequestParam String filename){
   return result;
 }  
 
-
+@PostMapping("/search")
+String postSearch(@RequestParam String filename){
+  
+  return "list.html";
+}  
 
 
   // @Autowired
