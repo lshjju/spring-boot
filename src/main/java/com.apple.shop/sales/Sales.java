@@ -21,6 +21,7 @@ public class Sales {
     foreignkey = @ForeignKey(ConstrainMode.NO_CONSTRAINT)
   )
   private Member member;
+  
   @CreationTimestamp
   private LocalDateTime created;
 }
