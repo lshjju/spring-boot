@@ -1,0 +1,2 @@
+CREATE FULLTEXT INDEX fulltext_index
+ON shop.item(title) with parser ngram;    
