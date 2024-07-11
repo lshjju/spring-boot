@@ -34,6 +34,8 @@ String addPost(String title, Integer price) {
   
 @GetMapping("/detail/{id}")
 String detail(@PathVariable Long id, Model model) {
+
+  CommentRepository.findAllByParentId(1L)
   
   Optional<Item> result = itemRepository.findById(id);
   if (result.isPresent()){
