@@ -93,7 +93,10 @@ String getURL(@RequestParam String filename){
 }  
 
 @PostMapping("/search")
-String postSearch(@RequestParam String filename){
+String postSearch(@RequestParam String searchText){
+
+  var result = itemRepository.findAllByTitleContains(searchText);
+  System.out.println(result);
   
   return "list.html";
 }  
