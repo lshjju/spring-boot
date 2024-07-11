@@ -8,4 +8,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
   Page<Item> findPageBy(Pageble page);
   List<Item> findAllByTitleContains(String title);
+
+  @Query(value = "select * from item where id = 2", nativeQuery = true)
+  Item rawQuery1();
+
 } 
