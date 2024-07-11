@@ -15,7 +15,12 @@ public class Sales {
   private String ItemName;
   private Integer price;
   private Integer count;
-  private Long memberId;
+  @ManyToOne
+  @JoinColumn(
+    name = "member_id", 
+    foreignkey = @ForeignKey(ConstrainMode.NO_CONSTRAINT)
+  )
+  private Member member;
   @CreationTimestamp
   private LocalDateTime created;
 }
