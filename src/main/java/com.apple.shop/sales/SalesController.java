@@ -14,7 +14,7 @@ public class SalesController {
     sales.setPrice(price);
     sales.setItemName(title);
     CustomUser user = (Customuser) auth.getPrincipal();    
-    sales.setMemberId(user.id);
+    // sales.setMemberId(user.id);
     salesRepository.save(sales);
     
     return "list.html";
@@ -22,8 +22,8 @@ public class SalesController {
   }
 
   @GetMapping("/order/all")
-  String getOrder(Authentication auth) {
-    var result = salesRepository.findAll();
+  String getOrderAll() {
+    List<Sales> result = salesRepository.findAll();
     System.out.println(result.get(0));
     return "list.html";
   }
