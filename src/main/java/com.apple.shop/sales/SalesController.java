@@ -13,12 +13,22 @@ public class SalesController {
     sales.setCount(count);
     sales.setPrice(price);
     sales.setItemName(title);
-    CustomUser user = (Customuser) auth.getPrincipal();
-    sales.setMemberId(???);
+    CustomUser user = (Customuser) auth.getPrincipal();    
+    sales.setMemberId(user.id);
     salesRepository.save(sales);
+    
     return "list.html";
   
   }
+
+  @GetMapping("/order/all")
+  String getOrder(Authentication auth) {
+    var result = salesRepository.findAll();
+    System.out.println(result.get(0));
+    return "list.html";
+  }
+
+  
   
 }
 
