@@ -15,7 +15,7 @@ public class Sales {
   private String ItemName;
   private Integer price;
   private Integer count;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(
     name = "member_id", 
     foreignkey = @ForeignKey(ConstrainMode.NO_CONSTRAINT)
