@@ -14,7 +14,10 @@ public class SalesController {
     sales.setPrice(price);
     sales.setItemName(title);
     CustomUser user = (Customuser) auth.getPrincipal();    
-    // sales.setMemberId(user.id);
+    var member = new Member();
+    member.setId(user.id);
+    sales.setMemberId(member);
+    
     salesRepository.save(sales);
     
     return "list.html";
@@ -25,7 +28,7 @@ public class SalesController {
   String getOrderAll() {
     List<Sales> result = salesRepository.findAll();
     System.out.println(result.get(0));
-    return "list.html";
+    return "sales.html";
   }
 
   
