@@ -12,15 +12,15 @@ public class Member {
   
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long id;
+  private Long id;
   @Column(unique = true)
-  public String username;
-  public String displayName;
-  public String password;
+  private String username;
+  private String displayName;
+  private String password;
 
   @ToString.Exclude
   @OneToMany(mappedBy = "member")
-  List<Sales> sales = new ArrayList<>();
+  private List<Sales> sales = new ArrayList<>();
 
   
 } 
