@@ -2,8 +2,9 @@
 public class ItemController {
 
   @GetMapping("/list")
-  String list(){
-  return "list.html";
+  String list(Model model){
+    modle.addAttribute("name", "홍길동");
+    return "list.html";
 }
   
 }
