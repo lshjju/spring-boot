@@ -1,12 +1,10 @@
-
-
 @Controller
 public class BasicController {
     @GetMapping("/")
     @ResponseBody
     String hello(){
-    return "hello";
-}   
+        return "hello";
+    }   
 }
 
 
