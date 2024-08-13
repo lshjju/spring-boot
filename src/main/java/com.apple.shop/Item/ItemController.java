@@ -1,3 +1,16 @@
+@Controller
+public class ItemController {
+
+  @GetMapping("/list")
+  String list(){
+  return "list.html";
+}
+  
+}
+
+
+
+/////////////////////////////////////
 package com.apple.shop.item;
 import org.springframework.stereotype.Controller;
 
