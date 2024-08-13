@@ -1,3 +1,19 @@
+
+
+@Controller
+public class BasicController {
+    @GetMapping("/")
+    @ResponseBody
+    String hello(){
+    return "hello";
+}   
+}
+
+
+
+
+///////////////////////////
+
 package com.apple.shop;
 
 @Controller
