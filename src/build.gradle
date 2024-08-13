@@ -1,4 +1,20 @@
 dependencies {
+  
+  
+
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  developmentOnly
+  testImplementation
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}
+
+tasks.named('test') { Task it ->
+  useJUnitPlatform()
+  
+}
+
+//////////////////////////////////
+dependencies {
   developmentOnly
   testImplementation
   implementation
