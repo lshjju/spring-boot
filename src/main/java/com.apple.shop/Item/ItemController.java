@@ -1,12 +1,14 @@
 @Controller
+@RequiredArgsConstructor
 public class ItemController {
 
+  private final ItemRepository itemRepository;
+  
   @GetMapping("/list")
   String list(Model model){
-
+    List<Item> result = itemRepository.finaAll();
+    model.addAttribute("items", result);
     
-    
-    modle.addAttribute("name", "비싼 바지");
     return "list.html";
 }
   
