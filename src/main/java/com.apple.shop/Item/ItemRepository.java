@@ -1,3 +1,9 @@
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+ 
+
+} 
+/////////////////////////////////////
 package com.apple.shop.item;
 
 import org.springframework.data.domain.Page;
