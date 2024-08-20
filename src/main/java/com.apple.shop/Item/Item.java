@@ -1,7 +1,9 @@
 @Entity
+@ToString
 public class Item {
   @Id @GeneratedValue(stragegy = GenerationType.IDENTITY)
   public Long id;
+  
   public String title;
   public Integer price;
 }
