@@ -8,6 +8,8 @@ public class ItemController {
   String list(Model model){
     List<Item> result = itemRepository.finaAll();
     model.addAttribute("items", result);
+    var a = new Item();
+    System.out.println(a);
     
     return "list.html";
 }
