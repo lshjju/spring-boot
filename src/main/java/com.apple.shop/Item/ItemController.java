@@ -11,7 +11,17 @@ public class ItemController {
     
     return "list.html";
 }
-  
+
+  @GetMapping("/write")
+  String write(){
+    return "write.html";
+}
+
+  @PostMapping("/add")
+  String addPost(String title, String price){
+    
+    return "redirect:/list";
+}
 }
 
 
