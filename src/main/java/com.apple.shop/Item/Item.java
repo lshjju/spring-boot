@@ -1,5 +1,7 @@
 @Entity
 @ToString
+@Getter
+@Setter
 public class Item {
   @Id @GeneratedValue(stragegy = GenerationType.IDENTITY)
   public Long id;
