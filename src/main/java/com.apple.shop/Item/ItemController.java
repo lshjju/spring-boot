@@ -18,10 +18,16 @@ public class ItemController {
 }
 
   @PostMapping("/add")
-  String addPost(String title, String price){
-    
+  String addPost(String title, Integer price){
+
+    Item item = new Item();
+    item.setTitle(title);
+    item.setPrice(price);
+    itemRepository.save(item);
     return "redirect:/list";
 }
+
+  
 }
 
 
