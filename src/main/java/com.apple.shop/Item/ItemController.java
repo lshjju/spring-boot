@@ -29,15 +29,16 @@ public class ItemController {
 
 
   @GetMapping("/detail/{id}")
-  String detail(@PathVariable Integer id){
+  String detail(@PathVariable Long id, Model model){
 
-    Optional<Item> result = itemRepository.findById(1L);
+    Optional<Item> result = itemRepository.findById(id);
     if ( result.isPresent() ){
-      sout
+      model.addAttribute("data", result.get());
+      return "detail.html";
+    } else {
+      return "redirect:/list";
     }
     
-
-    return "detail.html";
 }  
   
 }
