@@ -1,3 +1,23 @@
+@Controller
+@RequiredArgsConstructor
+public class MemberController {
+  
+  private final MemberRepository memberRepository;
+  private final PasswordEncoder passwordEncoder;
+
+  @GetMapping("/register")
+  String register() {
+    return "register.html";
+  }
+
+  @PostMapping("/member")
+  String addMember() {
+    return "redirect:/list";
+  }
+
+
+}
+////////////////////////////////////
 package com.apple.shop.member;
 
 import org.springframework.stereotype.Controller;
