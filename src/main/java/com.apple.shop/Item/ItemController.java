@@ -79,6 +79,13 @@ public class ItemController {
   }  
 
 
+// @GeteMapping("/test2")
+// String deleteItem() {
+//   var result = new BCryptPasswordEncorder().encode("문자");
+//   System.out.println(result);
+//   return "redirect:/list";
+// }     
+
   
 }
 
