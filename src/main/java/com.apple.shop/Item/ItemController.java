@@ -71,6 +71,13 @@ public class ItemController {
   }   
 
 
+  @DeleteMapping("/item")
+  ResponseEntity<String> deleteItem(@RequestParam Long id){
+    itemRepository.deleteById(id);
+    return ResponseEntity.status(200).body("삭제완료");
+    
+  }  
+
 
   
 }
