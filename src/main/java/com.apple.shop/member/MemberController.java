@@ -11,7 +11,17 @@ public class MemberController {
   }
 
   @PostMapping("/member")
-  String addMember() {
+  String addMember(
+      String username,
+      String password,
+      String displayName
+  ) {
+    Member member = new Member();
+    member.setUsername(username);
+    var hash = passwordEncoder.encode(password);
+    member.setPassword(hash);
+    member.setDisplayName(displayName);
+    memberRepository.save(member);
     return "redirect:/list";
   }
 
