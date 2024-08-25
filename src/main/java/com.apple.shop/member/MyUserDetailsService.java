@@ -15,17 +15,24 @@ public class MyUserDetailsService implements UserDetailsService {
 
     List<GrantedAutority> autorities = new ArrayList<>();
     authorities.add(new SimpleGrantedAuthority("일반유저"));
-
-    return new User(user.getUsername(), user.getPassword(), authorities)
-
-
-
-
-    
-
+    var a = new CustomUser(user.getUsername(), user.getPassword(), authorities);
+    a.displayName = user.getDisplayName();
+    return a;
   } 
 
 }
+
+class CustomUser extends User {
+  public String displayName;
+  public CustomUser(
+                   String username,
+                   String password,
+                   List<GrantedAuthority> authorities 
+  ) {
+    super(username, password, authorities);
+  }
+}
+
 /////////////////////////////////
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
