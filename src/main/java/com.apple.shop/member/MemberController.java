@@ -30,7 +30,14 @@ public class MemberController {
     return "login.html";
   }
   
+   @GetMapping("/my-page")
+  public String myPage(Autentication auth) {
 
+    return "mypage.html";
+  }
+
+
+  
 
 }
 ////////////////////////////////////
