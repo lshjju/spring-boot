@@ -79,12 +79,14 @@ public class ItemController {
   }  
 
 
-// @GeteMapping("/test2")
-// String deleteItem() {
-//   var result = new BCryptPasswordEncorder().encode("문자");
-//   System.out.println(result);
-//   return "redirect:/list";
-// }     
+  @GetMapping("/list/page/{abc}")
+  String getListPage(Model model, @PathVariable Integer abc){
+    Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
+    model.addAttribute("items", result);   
+    return "list.html";
+  }  
+
+
 
   
 }
