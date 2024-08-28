@@ -98,7 +98,12 @@ public class ItemController {
   }  
 
 
-
+  @PostMapping("/search")
+  String postSearch(@RequestParam String searchText){
+    itemRepository.findAllByTitleConatins("")
+    
+    return "list.html";
+  } 
 
 
   
