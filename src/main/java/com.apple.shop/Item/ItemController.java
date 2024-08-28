@@ -100,7 +100,8 @@ public class ItemController {
 
   @PostMapping("/search")
   String postSearch(@RequestParam String searchText){
-    var result = itemRepository.findAllByTitleConatins(searchText);
+    var result = itemRepository.rawQuery1();
+    System.out.println(result);
     
     return "list.html";
   } 
