@@ -100,38 +100,23 @@ public class ItemController {
 
   @PostMapping("/search")
   String postSearch(@RequestParam String searchText){
-    var result = itemRepository.rawQuery1();
-    System.out.println(result);
-    
+    var result = itemRepository.rawQuery1(searchText);
+    System.out.println(result); 
     return "list.html";
   } 
 
-
-  
   
 }
 
 
 
 /////////////////////////////////////
-
-
-
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
   
   CommentRepository.findAllByParentId(1L)
   
-@PostMapping("/search")
-String postSearch(@RequestParam String searchText){
-  var result = itemRepository.rawQuery1(searchText);
-  // var result = itemRepository.findAllByTitleContains(searchText);
-  System.out.println(result);
-  return "list.html";
-}  
-
-
   @Autowired
   ItemController(ItemRepository itemRepository) {
     this.itemRepository = itemRepository;
