@@ -81,13 +81,25 @@ public class ItemController {
 
   @GetMapping("/list/page/{abc}")
   String getListPage(Model model, @PathVariable Integer abc){
+    
     Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
     model.addAttribute("items", result);   
     return "list.html";
   }  
 
 
+  @GetMapping("/presigned-url")
+  String getURL(@RequestParam String filename){
+    System.out.println(filename);
+    
+    return "list.html";
+  }  
 
+
+
+
+
+  
   
 }
 
