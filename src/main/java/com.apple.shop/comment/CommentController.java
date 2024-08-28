@@ -1,7 +1,15 @@
+@Controller
+@RequiredArgsConstructor
 public class CommentController {
 
+  private final CommentRepository commentRepository;
+
   @PostMapping("/comment")
-  String postComment(){
+  String postComment(@RequestParam String content, Authentication auth){
+    (CustomUser) auth.getPrincipal();
+    var data = new Comment();
+    data.setContent("sdfsdf");
+    commentRepository.save(data);
     return "";
   }
 }
