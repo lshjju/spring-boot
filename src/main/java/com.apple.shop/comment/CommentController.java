@@ -1,3 +1,11 @@
+public class CommentController {
+
+  @PostMapping("/comment")
+  String postComment(){
+    return "";
+  }
+}
+///////////////////////
 package com.apple.shop.comment;
 
 import lombok.RequredArgsConstrutor;
