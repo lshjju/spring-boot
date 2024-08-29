@@ -1,8 +1,17 @@
-package com.apple.shop.sales;
+@Entity
+public class Sales {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  Long id;
+  String itemName;
+  Integer price;
+  Integer count;
+  Long memberId;
+  @CreationTimestamp
+  LocalDateTime created;
+}
+//////////////////////////////
 
-import jakarta.persistence.Entity;
-import org.hibernate.annotations.CreationTimestamp;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
