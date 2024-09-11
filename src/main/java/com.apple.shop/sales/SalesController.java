@@ -25,21 +25,19 @@ public class SalesController {
 
   @GetMapping("/order/all")
   String getOrderAll(){
-    List<Sales> result = salesRepository.customFindAll();
-    System.out.println(result.get(0));
 
     memberRepository.finlById(1L);
-    System.out.println(result); 
+    System.out.println(result.get().getSales()); 
     return "sales.html";
   }
   
 }
-///////////////////////
+
 
   
 
     
-    System.out.println(result.get().getSales());    
+       
     
 
 
