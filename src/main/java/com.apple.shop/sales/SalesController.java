@@ -25,7 +25,7 @@ public class SalesController {
   @GetMapping("/order/all")
   String getOrderAll(){
     List<Sales> result = salesRepository.customFindAll();
-    System.out.println(result);
+    System.out.println(result.get(0));
     return "sales.html";
   }
   
