@@ -9,7 +9,7 @@ public class Sales {
   private String itemName;
   private Integer price;
   private Integer count;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(
     name = "member_id", 
     foreignkey = @ForeignKey(ConstrainMode.NO_CONSTRAINT)
@@ -19,10 +19,5 @@ public class Sales {
   @CreationTimestamp
   private LocalDateTime created;
 }
-//////////////////////////////
 
-
-
-
-  @ManyToOne(fetch = FetchType.LAZY)
 
