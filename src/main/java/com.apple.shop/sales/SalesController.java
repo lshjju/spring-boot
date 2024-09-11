@@ -3,6 +3,22 @@
 public class SalesController {
 
   private final SalesRepository salesRepository;
+  
+  @PostMapping("/order")
+  String postOrder() {
+    Sales sales = new Sales();    
+    salesRepository.save(sales);
+    
+    return "list.html";
+  }
+  
+}
+///////////////////////
+@Controller
+@RequiredArgsConstructor
+public class SalesController {
+
+  private final SalesRepository salesRepository;
   private final MemberRepository memberRepository;
   
   @PostMapping("/order")
