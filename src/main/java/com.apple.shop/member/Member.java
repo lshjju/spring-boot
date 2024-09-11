@@ -12,19 +12,13 @@ public class Member {
   private String username;
   private String displayName;
   private String password;
-
+  
+  @ToString.Exclude
   @OneToMany(mappedBy = "member")
-  List<Sales> sales = new ArrayList<>();
-
+  private List<Sales> sales = new ArrayList<>();
   
 }
 
-///////////////////////////
-
-
-  @ToString.Exclude
- 
-  private List<Sales> sales = new ArrayList<>();
 
   
 
