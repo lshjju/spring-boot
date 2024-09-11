@@ -1,14 +1,17 @@
 @Entity
+@Getter
+@Setter
+@ToString
 public class Sales {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
-  String itemName;
-  Integer price;
-  Integer count;
-  Long memberId;
+  private Long id;
+  private String itemName;
+  private Integer price;
+  private Integer count;
+  private Long memberId;
   @CreationTimestamp
-  LocalDateTime created;
+  private LocalDateTime created;
 }
 //////////////////////////////
 
