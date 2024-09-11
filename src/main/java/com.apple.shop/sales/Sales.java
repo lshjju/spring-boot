@@ -9,25 +9,7 @@ public class Sales {
   private String itemName;
   private Integer price;
   private Integer count;
-  private Long memberId;
-  @CreationTimestamp
-  private LocalDateTime created;
-}
-//////////////////////////////
-
-
-@Entity
-@Getter
-@Setter
-@ToString
-public class Sales {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  private String ItemName;
-  private Integer price;
-  private Integer count;
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(
     name = "member_id", 
     foreignkey = @ForeignKey(ConstrainMode.NO_CONSTRAINT)
@@ -37,3 +19,10 @@ public class Sales {
   @CreationTimestamp
   private LocalDateTime created;
 }
+//////////////////////////////
+
+
+
+
+  @ManyToOne(fetch = FetchType.LAZY)
+
