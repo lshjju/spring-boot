@@ -3,6 +3,7 @@
 @Setter  
 @ToString
 public class Member {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -11,13 +12,18 @@ public class Member {
   private String username;
   private String displayName;
   private String password;
+
+  @OneToMany(mappedBy = "member")
+  List<Sales> sales = new ArrayList<>();
+
+  
 }
 
 ///////////////////////////
 
 
   @ToString.Exclude
-  @OneToMany(mappedBy = "member")
+ 
   private List<Sales> sales = new ArrayList<>();
 
   
