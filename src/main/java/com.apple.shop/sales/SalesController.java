@@ -14,7 +14,9 @@ public class SalesController {
     sales.setPrice(price);
     sales.setItemName(title);
     CustomUser user = (CustomUser) auth.getPricipal();
-    // sales.setMemberId(user.id);
+    var member = new Member();
+    member.setId(user.id);
+    sales.setMember(member);    
     salesRepository.save(sales);
     
     return "list.html";
@@ -33,21 +35,10 @@ public class SalesController {
 
   private final MemberRepository memberRepository;
   
-  
-    var member = new Member();
-    member.setId(user.id);
-    sales.setMemberId(member);
-    
-
-
-  @GetMapping("/order/all")
-  String getOrderAll() {
-
 
     memberRepository.finlById(1L);
     System.out.println(result.get().getSales());    
     return "sales.html";
-  }
 
 
 
