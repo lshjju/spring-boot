@@ -25,9 +25,8 @@ public class SalesController {
   @GetMapping("/order/all")
   String getOrderAll(){
     List<Sales> result = salesRepository.customFindAll();
-    System.out.println(result.get(0));
-
-    return "list.html";
+    System.out.println(result);
+    return "sales.html";
   }
   
 }
@@ -38,7 +37,7 @@ public class SalesController {
 
     memberRepository.finlById(1L);
     System.out.println(result.get().getSales());    
-    return "sales.html";
+    
 
 
 
