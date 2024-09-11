@@ -3,6 +3,7 @@
 public class SalesController {
 
   private final SalesRepository salesRepository;
+  private final MemberRepository memberRepository;
   
   @PostMapping("/order")
   String postOrder(@RequestParam String title,
@@ -26,16 +27,18 @@ public class SalesController {
   String getOrderAll(){
     List<Sales> result = salesRepository.customFindAll();
     System.out.println(result.get(0));
+
+    memberRepository.finlById(1L);
+    System.out.println(result); 
     return "sales.html";
   }
   
 }
 ///////////////////////
 
-  private final MemberRepository memberRepository;
   
 
-    memberRepository.finlById(1L);
+    
     System.out.println(result.get().getSales());    
     
 
