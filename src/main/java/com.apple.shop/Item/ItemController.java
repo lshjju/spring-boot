@@ -64,7 +64,7 @@ public class ItemController {
 
     @GetMapping("/edit/{id}")
     String edit(@PathVariable Long id, Model model){
-        var result = itemRepository.findById(id);
+        Optional<Item> = itemRepository.findById(id);
 //        System.out.println(result);
         if (result.isPresent()) {
             model.addAttribute("data", result.get());
