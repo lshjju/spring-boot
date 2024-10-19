@@ -18,6 +18,7 @@ public class ItemController {
 
     private final ItemRepository itemRepository;
     private final ItemService itemService;
+    private final ItemEdit itemEdit;
 
     @GetMapping("/list")
     String list(Model model) {
@@ -75,17 +76,15 @@ public class ItemController {
 
     }
 
-    @PostMapping("/edit")
+     @PostMapping("/edit")
     String editItem(String title, Integer price, Long id){
-
-        Item item = new Item();
+        itemEdit.saveItem(id, title, price);
+/*        Item item = new Item();
         item.setId(id);
         item.setTitle(title);
         item.setPrice(price);
-        itemRepository.save(item);
-
+        itemRepository.save(item);*/
         return "redirect:/list";
-
     }
 
     @DeleteMapping("/item")
