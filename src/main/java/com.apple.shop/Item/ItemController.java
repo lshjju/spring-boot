@@ -93,6 +93,14 @@ public class ItemController {
         return ResponseEntity.status(200).body("삭제완료");
     }
 
+    //    PageRequest error
+/*    @GetMapping("/list/page/{abc}")
+    String getListPage(Model model, @PathVariable Integer abc) {
+        Page<Item> result = itemRepository.findPageBy(PageRequest.of(abc-1, 5));
+        model.addAttribute("items", result);
+        return "list.html";
+    }*/
+
 
 
 }
