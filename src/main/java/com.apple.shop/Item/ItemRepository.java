@@ -3,6 +3,11 @@ package jinuk.project3.item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
+
+
+//    PageRequest error
+//    Page<Item> findPageBy(Pageable page);
+ 
 }
 
 
